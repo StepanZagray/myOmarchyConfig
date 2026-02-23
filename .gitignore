@@ -1,0 +1,17 @@
+# Ignore caches and generated files
+**/cache/
+**/Cache/
+**/GPUCache/
+**/blob_storage/
+**/logs/
+**/crash-reports/
+**/Crashpad/
+**/Session Storage/
+**/Local Storage/
+**/Service Worker/
+**/*.log
+**/*.lock
+
+Cursor/
+vivaldi/
+net.imput.helium/

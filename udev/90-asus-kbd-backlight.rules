@@ -1,0 +1,3 @@
+# Turn on ASUS keyboard backlight when the LED device is added at boot.
+# Brightness: 0=off, 1-3=on (3=max). Change the number below if you want dimmer.
+SUBSYSTEM=="leds", KERNEL=="asus::kbd_backlight", ATTR{brightness}="3"
