@@ -1,17 +1,70 @@
-# Ignore caches and generated files
+# Track this repo as a curated Omarchy/desktop rice.
+# Everything is ignored by default; only UI/session/theme and terminal config is
+# explicitly allowed below.
+*
+
+# Repo metadata
+!.gitignore
+
+# Desktop/session/UI
+!autostart/
+!autostart/**
+!environment.d/
+!environment.d/**
+!fontconfig/
+!fontconfig/**
+!gtk-3.0/
+!gtk-3.0/**
+!gtk-4.0/
+!gtk-4.0/**
+!hypr/
+!hypr/**
+!hyprland-preview-share-picker/
+!hyprland-preview-share-picker/**
+!mako/
+!mako/**
+!omarchy/
+!omarchy/**
+!omarchy.ttf
+!swayosd/
+!swayosd/**
+!systemd/
+!systemd/**
+!uwsm/
+!uwsm/**
+!walker/
+!walker/**
+!waybar/
+!waybar/**
+!QtProject.conf
+!mimeapps.list
+!user-dirs.dirs
+!user-dirs.locale
+!xdg-terminals.list
+
+# Terminals and shell prompt
+!alacritty/
+!alacritty/**
+!ghostty/
+!ghostty/**
+!kitty/
+!kitty/**
+!starship.toml
+
+# Generated noise even inside allowed trees
 **/cache/
 **/Cache/
+**/Code Cache/
 **/GPUCache/
+**/Crashpad/
+**/DawnGraphiteCache/
+**/DawnWebGPUCache/
+**/IndexedDB/
+**/Local Storage/
+**/Session Storage/
+**/Service Worker/
+**/Shared Dictionary/cache/
 **/blob_storage/
 **/logs/
-**/crash-reports/
-**/Crashpad/
-**/Session Storage/
-**/Local Storage/
-**/Service Worker/
 **/*.log
 **/*.lock
-
-Cursor/
-vivaldi/
-net.imput.helium/

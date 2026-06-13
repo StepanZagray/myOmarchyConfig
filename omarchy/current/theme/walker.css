@@ -4,3 +4,10 @@
 @define-color border #a9b1d6;
 @define-color foreground #a9b1d6;
 @define-color background #1a1b26;
+
+.box-wrapper,
+.search-container,
+.keybind-hints,
+.item-box {
+  border-radius: 6px;
+}
