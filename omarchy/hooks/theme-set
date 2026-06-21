@@ -1,0 +1,24 @@
+#!/bin/bash
+
+THEME_NAME=$1
+
+theme_name="$(cat "$HOME/.config/omarchy/current/theme.name" 2>/dev/null)"
+colors_file="$HOME/.config/omarchy/themes/$theme_name/colors.toml"
+if [ ! -f "$colors_file" ]; then
+    colors_file="$HOME/.config/omarchy/current/theme/colors.toml"
+fi
+
+payload=""
+if command -v tomlq >/dev/null 2>&1 && [ -f "$colors_file" ]; then
+    payload="$(tomlq -c --arg name "$theme_name" \
+        '{name: $name, colors: (with_entries(.key |= ascii_downcase))}' \
+        "$colors_file" 2>/dev/null)"
+fi
+
+if [ -n "$payload" ]; then
+    dbus-send --session --type=signal /org/omarchy/Theme \
+        org.omarchy.Theme.Changed "string:${payload}" 2>/dev/null || true
+    qs -c desktop ipc call theme apply "${payload}" 2>/dev/null || true
+else
+    qs -c desktop ipc call theme reload 2>/dev/null || true
+fi
