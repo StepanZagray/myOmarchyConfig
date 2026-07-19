@@ -2,10 +2,10 @@
 
 .theme-dark, .theme-light {
   /* Core colors */
-  --background-primary: #1a1b26;
-  --background-primary-alt: #1a1b26;
-  --background-secondary: #1a1b26;
-  --background-secondary-alt: #1a1b26;
+  --background-primary: #121319;
+  --background-primary-alt: #121319;
+  --background-secondary: #121319;
+  --background-secondary-alt: #121319;
   --text-normal: #a9b1d6;
 
   /* Selection colors */
@@ -15,7 +15,7 @@
   --background-modifier-border: #444b6a;
 
   /* Semantic heading colors */
-  --text-title-h1: #f7768e;
+  --text-title-h1: #a184bf;
   --text-title-h2: #9ece6a;
   --text-title-h3: #e0af68;
   --text-title-h4: #7aa2f7;
@@ -30,15 +30,15 @@
   --interactive-accent-hover: #7aa2f7;
 
   /* Muted text */
-  --text-muted: #444b6a;
-  --text-faint: #444b6a;
+  --text-muted: color-mix(in srgb, #a9b1d6 70%, transparent);
+  --text-faint: color-mix(in srgb, #a9b1d6 55%, transparent);
 
   /* Code */
   --code-normal: #449dab;
 
   /* Errors and success */
-  --text-error: #f7768e;
-  --text-error-hover: #f7768e;
+  --text-error: #a184bf;
+  --text-error-hover: #a184bf;
   --text-success: #9ece6a;
 
   /* Tags */
@@ -67,7 +67,7 @@
 }
 
 /* Syntax highlighting */
-.cm-s-obsidian span.cm-keyword { color: #f7768e; }
+.cm-s-obsidian span.cm-keyword { color: #a184bf; }
 .cm-s-obsidian span.cm-string { color: #9ece6a; }
 .cm-s-obsidian span.cm-number { color: #e0af68; }
 .cm-s-obsidian span.cm-comment { color: #444b6a; }

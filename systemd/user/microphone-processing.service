@@ -1,0 +1,14 @@
+[Unit]
+Description=Set safe built-in microphone gain
+After=pipewire.service wireplumber.service
+Wants=pipewire.service wireplumber.service
+
+[Service]
+Type=oneshot
+# +15 dB is a usable level without the previous extra +30 dB mic boost.
+ExecStart=/usr/bin/amixer -c 0 set "Internal Mic Boost,0" 0
+ExecStart=/usr/bin/amixer -c 0 set Capture 43
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

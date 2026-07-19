@@ -52,6 +52,7 @@ application/xhtml+xml=zen.desktop
 application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
 x-scheme-handler/t3code=t3code.desktop
+inode/directory=org.gnome.Nautilus.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
