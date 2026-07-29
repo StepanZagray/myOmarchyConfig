@@ -1,0 +1,6 @@
+[Unit]
+Description=Capture power menu screenshot
+
+[Service]
+Type=oneshot
+ExecStart=/tmp/capture-power-menu.sh
