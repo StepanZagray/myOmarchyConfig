@@ -1,0 +1,7 @@
+# Hyprland session: prefer Intel iGPU for the desktop compositor.
+# NVIDIA remains available for PRIME offload via `prime-run`.
+# AQ_DRM_DEVICES is colon-separated, so by-path names (which contain colons in the
+# PCI address) cannot be used. intel-card -> 00:02.0 (Intel), nvidia-card -> 01:00.0
+# (NVIDIA) are colon-free aliases from /etc/udev/rules.d/61-drm-gpu-alias.rules,
+# pinned by PCI slot so they survive card0/card1 renumbering across boots.
+export AQ_DRM_DEVICES="/dev/dri/intel-card:/dev/dri/nvidia-card"

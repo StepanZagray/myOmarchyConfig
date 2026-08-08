@@ -54,6 +54,7 @@ application/x-extension-xht=zen.desktop
 x-scheme-handler/t3code=t3code-nightly.desktop
 x-scheme-handler/t3code-dev=t3code-nightly.desktop
 inode/directory=org.gnome.Nautilus.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
