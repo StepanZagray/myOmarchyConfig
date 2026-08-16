@@ -55,6 +55,9 @@ x-scheme-handler/t3code=t3code-url-handler.desktop
 x-scheme-handler/t3code-dev=t3code-nightly.desktop
 inode/directory=org.gnome.Nautilus.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+x-scheme-handler/curseforge=curseforge.desktop
+x-scheme-handler/cfauth=curseforge.desktop
+x-scheme-handler/curseforge-checkout=curseforge.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
