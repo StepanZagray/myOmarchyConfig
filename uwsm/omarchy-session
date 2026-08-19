@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# SDDM starts this process as tty2's foreground process group. Keep terminal
+# control characters from turning ordinary in-session shortcuts into Unix
+# signals for UWSM, while preserving normal HUP/TERM-driven logout behavior.
+tty_state=
+child_pid=
+
+restore_tty() {
+  if [ -n "$tty_state" ]; then
+    stty "$tty_state" 2>/dev/null || true
+  fi
+}
+
+forward_signal() {
+  signal=$1
+  trap - HUP TERM
+
+  if [ -n "$child_pid" ]; then
+    kill -s "$signal" "$child_pid" 2>/dev/null || true
+    wait "$child_pid"
+    exit $?
+  fi
+
+  exit 0
+}
+
+if [ -t 0 ]; then
+  tty_state=$(stty -g)
+  stty -isig
+fi
+
+trap restore_tty EXIT
+trap 'forward_signal HUP' HUP
+trap 'forward_signal TERM' TERM
+trap '' INT
+
+/usr/bin/uwsm start -g -1 -e -D Hyprland hyprland.desktop &
+child_pid=$!
+wait "$child_pid"

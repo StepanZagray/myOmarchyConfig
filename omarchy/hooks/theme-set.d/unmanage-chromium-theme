@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+policy_file=/etc/chromium/policies/managed/color.json
+
+[[ -f $policy_file ]] || exit 0
+
+# Omarchy writes exactly these two keys from omarchy-theme-set-browser. Leave
+# the file alone if it ever contains any unrelated administrator policy.
+if jq -e '
+  type == "object"
+  and (.BrowserThemeColor | type == "string")
+  and .BrowserColorScheme == "device"
+  and ((keys | sort) == ["BrowserColorScheme", "BrowserThemeColor"])
+' "$policy_file" >/dev/null; then
+  unlink -- "$policy_file"
+fi

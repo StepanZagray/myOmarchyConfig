@@ -1,0 +1,17 @@
+[Unit]
+Description=EasyEffects processed laptop microphone
+BindsTo=pipewire.service
+After=pipewire.service wireplumber.service
+Wants=wireplumber.service
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/easyeffects --service-mode
+# EasyEffects creates its virtual source asynchronously. Load the saved input
+# preset and select that source only after it appears in the PipeWire graph.
+ExecStartPost=/usr/bin/bash -c 'for attempt in {1..100}; do if /usr/bin/pactl list short sources | /usr/bin/grep -q "[[:space:]]easyeffects_source[[:space:]]"; then /usr/bin/easyeffects --load-preset "Clean Microphone"; /usr/bin/pactl set-default-source easyeffects_source; exit 0; fi; /usr/bin/sleep 0.1; done; exit 1'
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
